@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:17
+    container_name: db_dcc_local
+    environment:
+      POSTGRES_DB: deploy_db
+      POSTGRES_USER: deploy_user
+      POSTGRES_PASSWORD: deploy-password4321
+    ports:
+      - "5440:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - dcc_network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  dcc_network:
+    external: true
