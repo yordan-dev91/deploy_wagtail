@@ -7,6 +7,8 @@ env = environ.Env()
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # Quick-start development settings - unsuitable for production-https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 # Application definition
+ALLOWED_HOSTS = ['dipleey.com', 'www.dipleey.com','localhost']
+CSRF_TRUSTED_ORIGINS = ['https://dipleey.com', 'https://www.dipleey.com']
 
 INSTALLED_APPS = [
     "home",
