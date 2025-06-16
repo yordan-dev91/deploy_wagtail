@@ -1,4 +1,19 @@
 services:
+  web:
+    build:
+      context: .  # el Dockerfile está en el mismo directorio que el compose
+    container_name: wagtail_dcc_local
+    command: /app/entrypoint.sh
+    ports:
+      - "8800:8000"
+    environment:
+      - DATABASE_URL=postgresql://deploy_user:deploy-password4321@db:5440/deploy_db
+      - DJANGO_SETTINGS_MODULE=settings_deploy.settings.production
+    depends_on:
+      - db
+    networks:
+      - dcc_network
+    restart: unless-stopped
   db:
     image: postgres:17
     container_name: db_dcc_local
