@@ -27,6 +27,7 @@ WORKDIR /app
 RUN chown wagtail:wagtail /app
 
 COPY --chown=wagtail:wagtail . .
+RUN chmod +x /app/entrypoint.sh
 
 USER wagtail
 
